@@ -9,12 +9,18 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @State private var name = ""
+    let students = ["Tom", "John", "Harry"]
+    @State private var selectedStudent = "Harry"
     
     var body: some View {
-        Form {
-            TextField("Enter your name", text: $name)
-            Text("Your name is \(name)")
+        NavigationView {
+            Form {
+                Picker("Select student", selection: $selectedStudent) {
+                    ForEach(students, id: \.self) {
+                        Text($0)
+                    }
+                }
+            }
         }
     }
 }
