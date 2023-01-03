@@ -13,7 +13,7 @@ struct HackingWithSwiftUIApp: App {
 
     var body: some Scene {
         WindowGroup {
-            unitConversion()
+            GuessTheFlag()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
