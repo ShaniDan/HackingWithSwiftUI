@@ -24,6 +24,7 @@ struct ContentView: View {
         let grandTotal = checkAmount + tipValue
         let amountPerPerson = grandTotal / peopleCount
         
+        
         return amountPerPerson
     }
     
@@ -35,6 +36,7 @@ struct ContentView: View {
                             .currency(code: Locale.current.currency?.identifier ?? "USD"))
                             .keyboardType(.decimalPad)
                             .focused($amountIsFocused)
+                    
                     Picker("Number of people", selection: $numberOfPeople) {
                         ForEach(2..<100) {
                             Text("\($0) people")
@@ -55,6 +57,8 @@ struct ContentView: View {
                 
                 Section {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundColor(tipPercentage == 0 ? .red : .white)
+                    
                 }
             }
             .navigationTitle("WeSplit")
